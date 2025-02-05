@@ -1,5 +1,6 @@
 import requests
-from download_image import download_image
+from download_images import download_image
+
 
 def main():
     url = "https://api.spacexdata.com/v5/launches/5eb87d47ffd86e000604b38a"

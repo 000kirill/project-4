@@ -1,7 +1,8 @@
 import requests
 from pathlib import Path
+from dotenv import load_dotenv
 
-def download_image(link, path, api_key=""):
+def download_images(link, path, api_key=""):
     payload = {
         "api_key": api_key
     }
@@ -12,7 +13,7 @@ def download_image(link, path, api_key=""):
         file.write(response.content)
 
 def main():
-    download_image()
+    download_images()
 
 
 if __name__ == 'main':

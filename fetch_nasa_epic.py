@@ -1,9 +1,11 @@
 import requests
-from download_image import download_image
+from download_images import download_image
+import os
+from dotenv import load_dotenv
 
 
 def main():
-    api_key = "REM5wj8lR6iLveXgu5KW2ey8cEgug1DlOUSgeoMM"
+    api_key = os.environ.get("API_KEY")
     url = "https://api.nasa.gov/EPIC/api/natural"
     payload = {
         "api_key": api_key
@@ -24,6 +26,7 @@ def main():
         link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{mounth}/{number}/png/{image}.png"
         path = f'pictures/epic{i}.png'
         download_image(link, path, api_key)
+
 
 if __name__ == 'main':
     main()
