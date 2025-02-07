@@ -17,7 +17,8 @@ def main():
             
             for photo in files:
                 path = os.path.join("pictures", photo)
-                bot.send_document(chat_id=chat_id, document=open(path, 'rb'))
+                with open(path, 'wb') as file:
+                    bot.send_document(chat_id=chat_id, document=file )
                 time.sleep(10)
         time.sleep(delay)
 
