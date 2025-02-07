@@ -24,7 +24,7 @@ def main():
         number = split[2]
         
         link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{mounth}/{number}/png/{image}.png"
-        path = f'pictures/epic{i}.png'
+        path = os.path.join("pictures", f"epic{i}.jpg")
         download_images(link, path, api_key)
 
 

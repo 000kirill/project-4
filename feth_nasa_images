@@ -18,7 +18,7 @@ def main():
     for i, nasa_image in enumerate(nasa_images):
         link = nasa_image["url"]
         extention = os.path.splitext(link)[1]
-        path = f'pictures/nasa{i}{extention}'
+        path = os.path.join("pictures", f"nasa{i}.jpg")
         download_images(link, path)
         
 

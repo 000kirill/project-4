@@ -14,8 +14,10 @@ def main():
     while True:
         for root, dirs, files in os.walk("pictures"):
             random.shuffle(files)
+            
             for photo in files:
-                bot.send_document(chat_id=chat_id, document=open(f'pictures/{photo}', 'rb'))
+                path = os.path.join("pictures", photo)
+                bot.send_document(chat_id=chat_id, document=open(path, 'rb'))
                 time.sleep(10)
         time.sleep(delay)
 
