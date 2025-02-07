@@ -11,10 +11,3 @@ def download_images(link, path, api_key=""):
     response.raise_for_status()
     with open(path, 'wb') as file:
         file.write(response.content)
-
-def main():
-    download_images()
-
-
-if __name__ == 'main':
-    main()

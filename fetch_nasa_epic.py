@@ -1,5 +1,5 @@
 import requests
-from download_images import download_image
+from download_images import download_images
 import os
 from dotenv import load_dotenv
 
@@ -25,8 +25,8 @@ def main():
         
         link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{mounth}/{number}/png/{image}.png"
         path = f'pictures/epic{i}.png'
-        download_image(link, path, api_key)
+        download_images(link, path, api_key)
 
 
-if __name__ == 'main':
+if __name__ == "__main__":
     main()
