@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 
 def main():
-    api_key = os.environ.get("API_KEY")
+    api_key = os.environ.get("NASA_API_KEY")
     directory = os.environ.get("DIRECTORY")
     url = "https://api.nasa.gov/EPIC/api/natural"
     payload = {

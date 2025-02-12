@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 def main():
     load_dotenv()
     delay = os.environ.get("TIME")
-    token = os.environ.get("TOKEN")
-    chat_id = os.environ.get("CHAT_ID")
+    token = os.environ.get("TELEGRAM_TOKEN")
+    chat_id = os.environ.get("TG_CHAT_ID")
     directory = os.environ.get("DIRECTORY")
     bot = telegram.Bot(token)
     while True:
