@@ -1,20 +1,20 @@
 import requests
-from download_images import download_images
+from tools import download_images
+from tools import make_request
 import os
 from dotenv import load_dotenv
 
 
 def main():
+    load_dotenv()
     api_key = os.environ.get("NASA_API_KEY")
     directory = os.environ.get("DIRECTORY")
     url = "https://api.nasa.gov/EPIC/api/natural"
     payload = {
         "api_key": api_key
     }
-
-    response = requests.get(url, params=payload)
-    response.raise_for_status()
-    for i, epic_image in enumerate(response.json()):
+    response = make_request(url, payload)
+    for i, epic_image in enumerate(response):
         date = epic_image["date"]
         image = epic_image["image"]
 
