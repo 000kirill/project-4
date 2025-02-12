@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 def main():
     api_key = os.environ.get("API_KEY")
+    directory = os.environ.get("DIRECTORY")
     payload = {
             "api_key": api_key,
             "start_date": "2024-12-01",
@@ -18,7 +19,7 @@ def main():
     for i, nasa_image in enumerate(nasa_images):
         link = nasa_image["url"]
         extention = os.path.splitext(link)[1]
-        path = os.path.join("pictures", f"nasa{i}.jpg")
+        path = os.path.join(directory, f"nasa{i}.jpg")
         download_images(link, path)
         
 

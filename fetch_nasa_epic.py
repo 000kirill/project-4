@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 def main():
     api_key = os.environ.get("API_KEY")
+    directory = os.environ.get("DIRECTORY")
     url = "https://api.nasa.gov/EPIC/api/natural"
     payload = {
         "api_key": api_key
@@ -24,7 +25,7 @@ def main():
         number = split[2]
         
         link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{mounth}/{number}/png/{image}.png"
-        path = os.path.join("pictures", f"epic{i}.jpg")
+        path = os.path.join(directory, f"epic{i}.jpg")
         download_images(link, path, api_key)
 
 
