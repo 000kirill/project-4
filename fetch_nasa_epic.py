@@ -2,6 +2,7 @@ from tools import download_images
 from tools import make_request
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 
 
 def main():
@@ -17,13 +18,12 @@ def main():
         date = epic_image["date"]
         image = epic_image["image"]
 
-        date = date.split()[0]
-        split = date.split("-")
-        year = split[0]
-        mounth = split[1]
-        number = split[2]
+        date = datetime.fromisoformat(date)
+        year = date.year
+        month = date.month
+        number = date.day
         
-        link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{mounth}/{number}/png/{image}.png"
+        link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/0{month}/{number}/png/{image}.png"
         path = os.path.join(directory, f"epic{i}.jpg")
         download_images(link, path, api_key)
 
