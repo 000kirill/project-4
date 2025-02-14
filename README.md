@@ -27,7 +27,7 @@ pytnon fetch_spacex_images.py
 ```
 Для скачивания фотографий: "фото дня" или "EPIC" от NASA проделайте тоже самое с файлами `fetch_nasa_images.py` и `fetch_nasa_epic.py`:
 ```
-pytnon fetch_nasa_images.py
+python fetch_nasa_images.py
 ```
 ```
 python fetch_nasa_epic.py
