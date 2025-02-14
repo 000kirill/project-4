@@ -3,7 +3,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
-def download_images(link, path, api_key=""):
+def download_images(link, path, api_key=None):
     payload = {
         "api_key": api_key
     }
@@ -15,7 +15,7 @@ def download_images(link, path, api_key=""):
     with open(path, 'wb') as file:
         file.write(response.content)
 
-def make_request(url, payload=""):
+def make_request(url, payload=None):
     response = requests.get(url, params=payload)
     response.raise_for_status()
     return response.json()
