@@ -1,4 +1,3 @@
-import requests
 from tools import download_images, make_request
 import os
 from dotenv import load_dotenv
@@ -18,10 +17,9 @@ def main():
     for i, nasa_image in enumerate(nasa_images):
         link = nasa_image["url"]
         extention = os.path.splitext(link)[1]
-        path = os.path.join(directory, f"nasa{i}.jpg")
+        path = os.path.join(directory, f"nasa{i}{extention}")
         download_images(link, path)
         
 
 if __name__ == "__main__":
     main()
-

@@ -1,4 +1,3 @@
-import requests
 from tools import download_images
 from tools import make_request
 import os

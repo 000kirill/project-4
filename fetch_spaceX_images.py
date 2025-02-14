@@ -1,4 +1,3 @@
-import requests
 from tools import download_images, make_request
 import os
 from pathlib import Path
