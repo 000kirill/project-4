@@ -5,6 +5,14 @@ import time
 from dotenv import load_dotenv
 
 
+def collect_files(directory):
+    paths = []
+    for root, dirs, files in os.walk(directory):
+        random.shuffle(files)
+        for photo in files:
+            paths.append(os.path.join(directory, photo))
+    return paths
+
 def main():
     load_dotenv()
     delay = os.environ.get("TIME")
@@ -13,14 +21,10 @@ def main():
     directory = os.environ.get("DIRECTORY")
     bot = telegram.Bot(token)
     while True:
-        for root, dirs, files in os.walk("pictures"):
-            random.shuffle(files)
-            
-            for photo in files:
-                path = os.path.join(directory, photo)
-                with open(path, 'wb') as file:
-                    bot.send_document(chat_id=chat_id, document=file )
-                time.sleep(10)
+        for path in collect_files(directory):
+            with open(path, 'wb') as file:
+                bot.send_document(chat_id=chat_id, document=file )
+            time.sleep(10)
         time.sleep(delay)
 
 
