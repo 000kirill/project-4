@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 
 def main():
     load_dotenv()
-    api_key = os.environ.get("NASA_API_KEY")
-    directory = os.environ.get("DIRECTORY")
+    api_key = os.environ["NASA_API_KEY"]
+    directory = os.environ["DIRECTORY"]
     url = "https://api.nasa.gov/planetary/apod"
     payload = {
             "api_key": api_key,

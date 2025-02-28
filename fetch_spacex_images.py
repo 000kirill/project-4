@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 def main():
     load_dotenv()
-    directory = os.environ.get("DIRECTORY")
+    directory = os.environ["DIRECTORY"]
     url = "https://api.spacexdata.com/v5/launches/5eb87d47ffd86e000604b38a"
     response = make_request(url, payload="")
     links = response["links"]["flickr"]['original']

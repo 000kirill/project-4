@@ -15,10 +15,10 @@ def collect_files(directory):
 
 def main():
     load_dotenv()
-    delay = os.environ.get("TIME")
-    token = os.environ.get("TELEGRAM_TOKEN")
-    chat_id = os.environ.get("TG_CHAT_ID")
-    directory = os.environ.get("DIRECTORY")
+    delay = os.getenv("TIME", default=14400)
+    token = os.environ["TELEGRAM_TOKEN"]
+    chat_id = os.environ["TG_CHAT_ID"]
+    directory = os.getenv("DIRECTORY", default="images")
     bot = telegram.Bot(token)
     while True:
         for path in collect_files(directory):
