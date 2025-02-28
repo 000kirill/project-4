@@ -9,8 +9,8 @@ def collect_files(directory):
     paths = []
     for root, dirs, files in os.walk(directory):
         random.shuffle(files)
-        for photo in files:
-            paths.append(os.path.join(directory, photo))
+        for file_name in files:
+            paths.append(os.path.join(directory, file_name))
     return paths
 
 def main():
