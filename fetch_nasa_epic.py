@@ -25,7 +25,7 @@ def main():
         
         link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/0{month}/{number}/png/{image}.png"
         path = os.path.join(directory, f"epic{i}.jpg")
-        download_images(link, path, api_key)
+        download_images(link, path, directory, api_key)
 
 
 if __name__ == "__main__":

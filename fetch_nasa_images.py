@@ -18,7 +18,7 @@ def main():
         link = nasa_image["url"]
         extention = os.path.splitext(link)[1]
         path = os.path.join(directory, f"nasa{i}{extention}")
-        download_images(link, path)
+        download_images(link, path, directory)
         
 
 if __name__ == "__main__":

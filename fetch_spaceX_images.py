@@ -12,7 +12,7 @@ def main():
     links = response["links"]["flickr"]['original']
     for i, link in enumerate(links):
         path = os.path.join(directory, f"spacex{i}.jpg")
-        download_images(link, path)
+        download_images(link, path, directory)
 
 
 if __name__ == "__main__":
