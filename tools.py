@@ -3,13 +3,13 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
-def download_images(link, path, directory, api_key=None):
+def download_image(link, path, directory, api_key=None):
     payload = {
         "api_key": api_key
     }
     
     Path(directory).mkdir(parents=True, exist_ok=True)
-    response = requests.get(link, payload)
+    response = requests.get(link, params=payload)
     response.raise_for_status()
     with open(path, 'wb') as file:
         file.write(response.content)

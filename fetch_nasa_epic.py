@@ -1,4 +1,4 @@
-from tools import download_images
+from tools import download_image
 from tools import make_request
 import os
 from dotenv import load_dotenv
@@ -7,6 +7,7 @@ from datetime import datetime
 
 def main():
     load_dotenv()
+    
     api_key = os.environ["NASA_API_KEY"]
     directory = os.environ["DIRECTORY"]
     url = "https://api.nasa.gov/EPIC/api/natural"
@@ -17,15 +18,15 @@ def main():
     for i, epic_image in enumerate(response):
         date = epic_image["date"]
         image = epic_image["image"]
-
+        
         date = datetime.fromisoformat(date)
         year = date.year
-        month = date.month
-        number = date.day
+        month = date.strftime("%m")
+        day = date.strftime("%d")
         
-        link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/0{month}/{number}/png/{image}.png"
+        link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{image}.png"
         path = os.path.join(directory, f"epic{i}.jpg")
-        download_images(link, path, directory, api_key)
+        download_image(link, path, directory, api_key)
 
 
 if __name__ == "__main__":
