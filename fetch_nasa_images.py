@@ -1,14 +1,18 @@
 from tools import download_image, make_request
 import os
 from dotenv import load_dotenv
+import argparse
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--directory", type=str, help="Название папки: ", default="pictures")
+    args = parser.parse_args()
     load_dotenv()
     start_date = os.environ["START_DAY"]
     end_date = os.environ["END_DAY"]
     api_key = os.environ["NASA_API_KEY"]
-    directory = os.environ["DIRECTORY"]
+    directory = args.directory
     url = "https://api.nasa.gov/planetary/apod"
     payload = {
             "api_key": api_key,

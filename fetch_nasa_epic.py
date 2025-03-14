@@ -3,13 +3,16 @@ from tools import make_request
 import os
 from dotenv import load_dotenv
 from datetime import datetime
+import argparse
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--directory", type=str, help="Название папки: ", default="pictures")
+    args = parser.parse_args()
     load_dotenv()
-    
     api_key = os.environ["NASA_API_KEY"]
-    directory = os.environ["DIRECTORY"]
+    directory = args.directory
     url = "https://api.nasa.gov/EPIC/api/natural"
     payload = {
         "api_key": api_key
