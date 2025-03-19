@@ -25,17 +25,17 @@ def main():
     chat_id = os.environ["TG_CHAT_ID"]
     bot = telegram.Bot(token)
     while True:
-        try:
-            paths = collect_files(directory)
-            random.shuffle(paths)
-            for path in paths:
+        paths = collect_files(directory)
+        random.shuffle(paths)
+        for path in paths:
+            try:
                 with open(path, 'rb') as file:
                     bot.send_document(chat_id=chat_id, document=file)
-                time.sleep(10)
-            time.sleep(args.delay)
-        except requests.ConnectionError:
-            time.sleep(5)
-
+            except requests.ConnectionError:
+                time.sleep(5)
+            time.sleep(10)
+        time.sleep(args.delay)
+        
 
 if __name__ == "__main__":
     main()
