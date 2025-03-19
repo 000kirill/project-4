@@ -1,7 +1,5 @@
 import requests
 from pathlib import Path
-from dotenv import load_dotenv
-import os
 
 def download_image(link, path, directory, payload=None):
     

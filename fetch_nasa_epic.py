@@ -1,7 +1,6 @@
 from tools import download_image
 from tools import make_request
 import os
-from dotenv import load_dotenv
 from datetime import datetime
 import argparse
 
@@ -9,13 +8,12 @@ import argparse
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--directory", type=str, help="Название папки: ", default="pictures")
+    parser.add_argument("--api_key", type=str, help=" NASA api key: ", default="REM5wj8lR6iLveXgu5KW2ey8cEgug1DlOUSgeoMM")
     args = parser.parse_args()
-    load_dotenv()
-    api_key = os.environ["NASA_API_KEY"]
     directory = args.directory
     url = "https://api.nasa.gov/EPIC/api/natural"
     payload = {
-        "api_key": api_key
+        "api_key": args.api_key
     }
     response = make_request(url, payload)
     for i, epic_image in enumerate(response):

@@ -1,23 +1,21 @@
 from tools import download_image, make_request
 import os
-from dotenv import load_dotenv
 import argparse
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--directory", type=str, help="Название папки: ", default="pictures")
+    parser.add_argument("--api_key", type=str, help=" NASA api key: ", default="REM5wj8lR6iLveXgu5KW2ey8cEgug1DlOUSgeoMM")
+    parser.add_argument("--start_date", type=str, help="Дата начала отсчета: ", default="2024-12-01")
+    parser.add_argument("--end_date", type=str, help=" Дата конца отсчета: ", default="2024-12-29")
     args = parser.parse_args()
-    load_dotenv()
-    start_date = os.environ["START_DAY"]
-    end_date = os.environ["END_DAY"]
-    api_key = os.environ["NASA_API_KEY"]
     directory = args.directory
     url = "https://api.nasa.gov/planetary/apod"
     payload = {
-            "api_key": api_key,
-            "start_date": start_date,
-            "end_date": end_date
+            "api_key": args.api_key,
+            "start_date": args.start_date,
+            "end_date": args.end_date
         }
     nasa_images = make_request(url, payload)
     for i, nasa_image in enumerate(nasa_images):

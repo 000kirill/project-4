@@ -17,12 +17,12 @@ def collect_files(directory):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--directory", type=str, help="Название папки: ", default="pictures")
+    parser.add_argument("--delay", type=int, help="Время задержки: ", default=14400)
     args = parser.parse_args()
+    directory = args.directory
     load_dotenv()
-    delay = os.getenv("TIME", default=14400)
     token = os.environ["TELEGRAM_TOKEN"]
     chat_id = os.environ["TG_CHAT_ID"]
-    directory = args.directory
     bot = telegram.Bot(token)
     while True:
         try:
@@ -32,7 +32,7 @@ def main():
                 with open(path, 'rb') as file:
                     bot.send_document(chat_id=chat_id, document=file)
                 time.sleep(10)
-            time.sleep(delay)
+            time.sleep(args.delay)
         except requests.ConnectionError:
             time.sleep(5)
 
