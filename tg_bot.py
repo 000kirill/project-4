@@ -4,7 +4,6 @@ import os
 import time
 from dotenv import load_dotenv
 import argparse
-import requests
 
 
 def collect_files(directory):
@@ -31,7 +30,7 @@ def main():
             try:
                 with open(path, 'rb') as file:
                     bot.send_document(chat_id=chat_id, document=file)
-            except requests.ConnectionError:
+            except ConnectionError:
                 time.sleep(5)
             time.sleep(10)
         time.sleep(args.delay)
