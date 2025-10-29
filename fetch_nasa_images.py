@@ -4,12 +4,12 @@ import argparse
 from dotenv import load_dotenv
 
 
-def doanload_nasa_images(nasa_images, directory):
+def download_nasa_images(nasa_images, directory):
     for i, nasa_image in enumerate(nasa_images):
         if nasa_image["media_type"] == "image":
             link = nasa_image["url"]
-            extention = os.path.splitext(link)[1]
-            path = os.path.join(directory, f"nasa{i}{extention}")
+            extension = os.path.splitext(link)[1]
+            path = os.path.join(directory, f"nasa{i}{extension}")
             download_image(link, path, directory)
         else:
             continue
@@ -31,7 +31,7 @@ def main():
             "end_date": args.end_date
         }
     nasa_images = make_request(url, payload)
-    doanload_nasa_images(nasa_images, directory)
+    download_nasa_images(nasa_images, directory)
         
 
 if __name__ == "__main__":
