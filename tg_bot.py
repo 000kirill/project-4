@@ -14,7 +14,7 @@ def collect_files(directory):
     return paths
 
 
-def send_images(directory, bot, chat_id, args):
+def send_images(directory, bot, chat_id, delay):
     while True:
         paths = collect_files(directory)
         random.shuffle(paths)
@@ -22,10 +22,10 @@ def send_images(directory, bot, chat_id, args):
             try:
                 with open(path, 'rb') as file:
                     bot.send_document(chat_id=chat_id, document=file)
-            except ConnectionError:
+            except (ConnectionError, telegram.error.TimedOut, telegram.error.NetworkError):
                 time.sleep(5)
-            time.sleep(10)
-        time.sleep(args.delay)
+            time.sleep(delay)
+        time.sleep(delay)
 
 
 def main():

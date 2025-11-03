@@ -19,7 +19,7 @@ def main():
     directory = args.directory
     
     url = f"https://api.spacexdata.com/v5/launches/{args.launch_id}"
-    response = make_request(url, payload="")
+    response = make_request(url)
     download_spacex_images(response, directory)
 
 
