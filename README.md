@@ -18,7 +18,7 @@ NASA_API_KEY="api ключ от NASA"
 ```
 
 ### Как использовать 
-Для скачивания фотографий от "SpeсeX" запустите файл `fetch_spacex_images.py` через консоль:
+Для скачивания фотографий от "SpaсeX" запустите файл `fetch_spacex_images.py` через консоль:
 ```
 python fetch_spacex_images.py
 ```
