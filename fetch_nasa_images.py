@@ -11,8 +11,6 @@ def download_nasa_images(nasa_images, directory):
             extension = os.path.splitext(link)[1]
             path = os.path.join(directory, f"nasa{i}{extension}")
             download_image(link, path, directory)
-        else:
-            continue
 
 
 def main():
