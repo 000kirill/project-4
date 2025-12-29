@@ -12,7 +12,7 @@ pip install -r requirements.txt
 Для работы с программой необходимо получить индивидуальный токен от telegram, chat_id и индивидуальный ключ от NASA, указать это необходимо в `.env` файле. 
 Так должен выглядеть файл `.env`:
 ```
-TELEGRAM_TOKEN="Токен для работы с ботом"
+TG_TOKEN="Токен для работы с ботом"
 TG_CHAT_ID="@cosmicpicture1"
 NASA_API_KEY="api ключ от NASA"
 ```
