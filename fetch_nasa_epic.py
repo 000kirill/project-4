@@ -4,23 +4,8 @@ import os
 from datetime import datetime
 import argparse
 from dotenv import load_dotenv
- 
- 
-def download_nasa_epic_images(response, directory, payload):
-    for i, epic_image in enumerate(response):
-        date = epic_image["date"]
-        image = epic_image["image"]
-        
-        date = datetime.fromisoformat(date)
-        year = date.year
-        month = date.strftime("%m")
-        day = date.strftime("%d")
-        
-        link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{image}.png"
-        path = os.path.join(directory, f"epic{i}.jpg")
-        download_image(link, path, directory, payload)
 
-
+    
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--directory", type=str, help="Название папки: ", default="pictures")
@@ -33,7 +18,19 @@ def main():
         "api_key": api_key
     }
     response = make_request(url, payload)
-    download_nasa_epic_images(response, directory, payload)
+    
+    for i, epic_image in enumerate(response):
+        date = epic_image["date"]
+        image = epic_image["image"]
+        
+        date = datetime.fromisoformat(date)
+        year = date.year
+        month = date.strftime("%m")
+        day = date.strftime("%d")
+        
+        link = f"https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{image}.png"
+        path = os.path.join(directory, f"epic{i}.jpg")
+        download_image(link, path, directory, payload)
 
 
 if __name__ == "__main__":

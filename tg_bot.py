@@ -31,7 +31,6 @@ def send_images(directory, bot, chat_id, delay):
         time.sleep(delay)
 
 
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--directory", type=str, help="Название папки: ", default="pictures")

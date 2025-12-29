@@ -3,13 +3,6 @@ import os
 import argparse
 
 
-def download_spacex_images(response, directory):
-    links = response["links"]["flickr"]['original']
-    for i, link in enumerate(links):
-        path = os.path.join(directory, f"spacex{i}.jpg")
-        download_image(link, path, directory)
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--directory", type=str, help="Название папки: ", default="pictures")
@@ -19,7 +12,12 @@ def main():
     
     url = f"https://api.spacexdata.com/v5/launches/{args.launch_id}"
     response = make_request(url)
-    download_spacex_images(response, directory)
+    links = response["links"]["flickr"]['original']
+    
+    for i, link in enumerate(links):
+        path = os.path.join(directory, f"spacex{i}.jpg")
+        download_image(link, path, directory)
+
 
 
 if __name__ == "__main__":

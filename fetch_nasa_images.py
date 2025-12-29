@@ -4,15 +4,6 @@ import argparse
 from dotenv import load_dotenv
 
 
-def download_nasa_images(nasa_images, directory):
-    for i, nasa_image in enumerate(nasa_images):
-        if nasa_image["media_type"] == "image":
-            link = nasa_image["url"]
-            extension = os.path.splitext(link)[1]
-            path = os.path.join(directory, f"nasa{i}{extension}")
-            download_image(link, path, directory)
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--directory", type=str, help="Название папки: ", default="pictures")
@@ -29,7 +20,13 @@ def main():
             "end_date": args.end_date
         }
     nasa_images = make_request(url, payload)
-    download_nasa_images(nasa_images, directory)
+
+    for i, nasa_image in enumerate(nasa_images):
+        if nasa_image["media_type"] == "image":
+            link = nasa_image["url"]
+            extension = os.path.splitext(link)[1]
+            path = os.path.join(directory, f"nasa{i}{extension}")
+            download_image(link, path, directory)
         
 
 if __name__ == "__main__":
