@@ -40,7 +40,7 @@ def main():
     directory = args.directory
     delay = args.delay
     load_dotenv()
-    token = os.environ["TELEGRAM_TOKEN"]
+    token = os.environ["TG_TOKEN"]
     chat_id = os.environ["TG_CHAT_ID"]
     bot = telegram.Bot(token)
     send_images(directory, bot, chat_id, delay)
