@@ -1,6 +1,5 @@
 from tools import download_image, make_request
-import os
-from pathlib import Path
+import os 
 import argparse
 
 
